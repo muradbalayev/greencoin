@@ -59,7 +59,7 @@ export default function Hero() {
               </div>
               <div className="flex items-center gap-2 text-xs text-muted">
                 <Bot className="w-4 h-4 text-primary" />
-                GPT-4 powered
+                AI powered
               </div>
             </div>
           </div>
