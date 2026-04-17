@@ -99,13 +99,13 @@ export default function Pricing() {
         </div>
 
         {/* Plans grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`bento-card bg-card rounded-2xl p-6 flex flex-col relative ${
+              className={`bento-card bg-card rounded-[2rem] p-8 flex flex-col relative ${
                 plan.popular
-                  ? "border-2 border-primary shadow-[0_4px_24px_rgba(26,107,60,0.12)]"
+                  ? "border-2 border-primary shadow-[0_8px_30px_rgba(17,120,64,0.12)]"
                   : "border border-card-border"
               }`}
             >

@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Activity, Clock, Coins, TrendingUp, Zap } from "lucide-react";
 
 function AnimatedTicker() {
@@ -14,7 +13,7 @@ function AnimatedTicker() {
   ];
 
   return (
-    <div className="overflow-hidden mt-6 rounded-xl bg-background border border-card-border p-3">
+    <div className="overflow-hidden mt-4 rounded-xl bg-background border border-card-border p-3">
       <div className="flex gap-6 animate-ticker whitespace-nowrap">
         {[...tickers, ...tickers].map((t, i) => (
           <div key={i} className="flex items-center gap-3 shrink-0">
@@ -27,33 +26,6 @@ function AnimatedTicker() {
         ))}
       </div>
     </div>
-  );
-}
-
-function CountUpNumber({ target, prefix = "", suffix = "" }) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    const duration = 2000;
-    const steps = 60;
-    const increment = target / steps;
-    let current = 0;
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(current));
-      }
-    }, duration / steps);
-    return () => clearInterval(timer);
-  }, [target]);
-
-  return (
-    <span className="text-primary font-bold">
-      {prefix}{count}{suffix}
-    </span>
   );
 }
 
@@ -81,34 +53,40 @@ export default function Features() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4 border border-primary/20">
             Xüsusiyyətlər
           </div>
-          <h2 className="text-3xl sm:text-4xl font-normal text-foreground tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
             Niyə GreenCoin?
           </h2>
         </div>
 
         {/* Bento grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[minmax(180px,auto)] mt-16">
           
-          {/* Large card - Real-time data (2x2) */}
-          <div className="bento-card bg-card border border-card-border rounded-2xl p-6 lg:p-8 lg:col-span-2 lg:row-span-2 flex flex-col justify-between">
+          {/* Large card - Real-time data with dashboard image (2x2) */}
+          <div className="bento-card bg-card border border-card-border rounded-[2rem] p-8 lg:p-10 lg:col-span-2 lg:row-span-2 flex flex-col justify-between overflow-hidden">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                 <Activity className="w-5 h-5 text-primary" />
               </div>
               <h3 className="text-xl font-bold text-foreground mb-2">Real-time məlumat</h3>
               <p className="text-sm text-muted leading-relaxed">
-                TwelveData + News API integrasis ilə canlı bazar məlumatları və xəbər analizi.
+                TwelveData + News API inteqrasiyası ilə canlı bazar məlumatları və xəbər analizi.
               </p>
+            </div>
+            {/* Dashboard mockup image */}
+            <div className="mt-4 rounded-xl overflow-hidden border border-card-border">
+              <img
+                src="/trading-dashboard.png"
+                alt="Trading Dashboard"
+                className="w-full h-auto object-cover"
+              />
             </div>
             <AnimatedTicker />
           </div>
 
-          {/* Medium card - 3 timeframes (1x2) */}
-          <div className="bento-card bg-card border border-card-border rounded-2xl p-6 lg:col-span-2 lg:row-span-1">
-            <div className="flex items-start justify-between mb-5">
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                <Clock className="w-5 h-5 text-primary" />
-              </div>
+          {/* Medium card - 3 timeframes (2x1) */}
+          <div className="bento-card bg-card border border-card-border rounded-[2rem] p-8 lg:p-10 lg:col-span-2 lg:row-span-1">
+            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+              <Clock className="w-5 h-5 text-primary" />
             </div>
             <h3 className="text-lg font-bold text-foreground mb-3">3 zaman aralığı</h3>
             <div className="flex gap-2">
@@ -128,11 +106,9 @@ export default function Features() {
           </div>
 
           {/* Medium card - Stocks & Crypto (2x1) */}
-          <div className="bento-card bg-card border border-card-border rounded-2xl p-6 lg:col-span-2 lg:row-span-1">
-            <div className="flex items-start justify-between mb-4">
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                <Coins className="w-5 h-5 text-primary" />
-              </div>
+          <div className="bento-card bg-card border border-card-border rounded-[2rem] p-8 lg:p-10 lg:col-span-2 lg:row-span-1 gap-4">
+            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+              <Coins className="w-5 h-5 text-primary" />
             </div>
             <h3 className="text-lg font-bold text-foreground mb-3">Həm səhm, həm kripto</h3>
             <div className="flex flex-wrap gap-2">
@@ -149,7 +125,7 @@ export default function Features() {
           </div>
 
           {/* Small card - BUY signal (1x1) */}
-          <div className="bento-card bg-card border border-card-border rounded-2xl p-6 flex flex-col items-center justify-center text-center">
+          <div className="bento-card bg-card border border-card-border rounded-[2rem] p-8 flex flex-col items-center justify-center text-center">
             <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
               <TrendingUp className="w-5 h-5 text-primary" />
             </div>
@@ -160,7 +136,7 @@ export default function Features() {
           </div>
 
           {/* Small card - n8n powered (1x1) */}
-          <div className="bento-card bg-card border border-card-border rounded-2xl p-6 flex flex-col items-center justify-center text-center">
+          <div className="bento-card bg-card border border-card-border rounded-[2rem] p-8 flex flex-col items-center justify-center text-center">
             <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
               <Zap className="w-5 h-5 text-primary" />
             </div>
