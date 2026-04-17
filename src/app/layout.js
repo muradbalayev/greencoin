@@ -22,7 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="az" className={`h-full antialiased ${jakarta.variable}`}>
-      <body className="min-h-full flex flex-col font-jakarta" style={{ fontFamily: "var(--font-jakarta), sans-serif" }}>
+      <body suppressHydrationWarning className="min-h-full flex flex-col font-jakarta" style={{ fontFamily: "var(--font-jakarta), sans-serif" }}>
         {children}
       </body>
     </html>
